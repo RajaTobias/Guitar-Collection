@@ -126,7 +126,7 @@ class AdminController extends Controller
                     }
                     public function soft($id)
                     {
-                        DB::update('UPDATE gitar SET G.is_delete = 1 WHERE id_gitar = :id_gitar', ['id_gitar' => $id]);
+                        DB::update('UPDATE gitar SET is_delete = 1 WHERE ID_GITAR = :ID_GITAR', ['ID_GITAR' => $id]);
 
                         return redirect()->route('admin.index')->with('success', 'Data Barang berhasil dihapus');
                     }

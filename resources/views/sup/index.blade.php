@@ -69,8 +69,15 @@
                             <img class="user-avatar rounded-circle" src="{{ asset('style/images/sup.jpg') }}">
                         </a>
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
-                            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                         </div>
                     </div>
  
@@ -147,10 +154,10 @@
                                             <td>{{ $data->NO_TELEPON }}</td>
                                             <td class = "form-inline">
                                                 <a href="{{ route('sup.edit', $data->ID_SUPPLIER) }}" type="button" class="ml-1 btn btn-primary rounded-3"></>Ubah</a>
-                                                <a href="{{ route('sup.delete', $data->ID_SUPPLIER) }}" onclick="return confirm('{{ __('Are you sure you want to delete?') }}')" type="button" class="ml-1 btn btn-danger rounded-3"></>Destroy</a>
+                                                <a href="{{ route('sup.delete', $data->ID_SUPPLIER) }}" onclick="return confirm('{{ __('Are you sure you want to destroy?') }}')" type="button" class="ml-1 btn btn-danger rounded-3"></>Destroy</a>
                                                 <form class = "ml-1 form-inline" method="POST" action="{{ route('sup.soft', $data->ID_SUPPLIER) }}">
                                                     @csrf
-                                                        <button onclick="return confirm('{{ __('Are you sure you want to destroy?') }}')" type="submit" class="btn btn-warning">Hapus</button>
+                                                        <button onclick="return confirm('{{ __('Are you sure you want to delete?') }}')" type="submit" class="btn btn-warning">Hapus</button>
                                                 </form>
                                             </td>
                                         </tr>

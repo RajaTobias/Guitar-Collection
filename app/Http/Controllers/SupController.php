@@ -38,7 +38,7 @@ class SupController extends Controller
     
         public function index(Request $request) {
             if ($request->has('search')){
-                $datas = DB::select('SELECT * FROM supplier WHERE is_delete = 0 and NAMA_SUPPLIER = :search;',[
+                $datas = DB::select('SELECT * FROM supplier WHERE is_delete = 0 and ID_SUPPLIER = :search;',[
                 'search'=>$request->search
                 
             ]);
